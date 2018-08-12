@@ -5,6 +5,20 @@
     <title>MLB--No Spoilers!</title>
   </head>
   <body>
-    
+    <header>
+      Welcome to No Spoiler MLB vids!
+    </header>
+
+    <div class="game">
+      <button>Click me</button>
+    </div>
   </body>
 </html>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+  $('.game').on('click', function(event) {
+    event.preventDefault()
+    alert("the video is loading")
+  })
+</script>
