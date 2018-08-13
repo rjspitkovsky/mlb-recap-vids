@@ -22,8 +22,12 @@
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
-  $('.game').on('click', function(event) {
-    event.preventDefault()
-    // $('.video').append("video goes here")
+  $(function () {
+    $('.game').on('click', function(event) {
+      event.preventDefault()
+      $.get("http://statsapi.mlb.com/api/v1/schedule/games/?sportId=1", function(data) {
+        console.log(data)
+      })
+    })
   })
 </script>
