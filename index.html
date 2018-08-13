@@ -6,12 +6,8 @@
   </head>
   <body>
     <header>
-      Welcome to No Spoiler MLB vids!
+    Today's MLB games
     </header>
-
-    <div class="game">
-      <button>Click me</button>
-    </div>
 
     <div id="games">
 
@@ -23,14 +19,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
 <script type="text/javascript">
   $(function () {
-    $('.game').on('click', function(event) {
-      event.preventDefault()
-      $.get("http://statsapi.mlb.com/api/v1/schedule/games/?sportId=1", function(data) {
-        const template = Handlebars.compile(document.getElementById("game-info").innerHTML)
-        const result = template(data.dates)
-        console.log(data.dates[0].games)
-        document.getElementById("games").innerHTML = result
-      })
+    $.get("http://statsapi.mlb.com/api/v1/schedule/games/?sportId=1", function(data) {
+      const template = Handlebars.compile(document.getElementById("game-info").innerHTML)
+      const result = template(data.dates)
+      console.log(data.dates[0].games)
+      document.getElementById("games").innerHTML = result
     })
   })
 </script>
