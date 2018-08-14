@@ -26,18 +26,25 @@
       document.getElementById("games").innerHTML = result
     })
   })
+
+  function handleClick() {
+
+    console.log(event.target)
+
+}
 </script>
 
 <script id="game-info" type="text/x-handlebars-template">
+  <div class="game" onclick="handleClick()">
     <section display="center">
       {{#each this}}
       <h1>{{date}}</h1>
         {{#each games}}
-        <h2>{{teams.away.team.name}}</h2>
-        <h3>vs.</h3>
-        <h2>{{teams.home.team.name}}</h3>
+        <p>{{teams.away.team.name}}  ({{teams.away.leagueRecord.wins}} - {{teams.away.leagueRecord.losses}})</p>
+        <h3>at</h3>
+        <p>{{teams.home.team.name}}   ({{teams.home.leagueRecord.wins}} - {{teams.home.leagueRecord.losses}})</p>
           {{/each}}
       {{/each}}
     </section>
-
+  <div>
 </script>
