@@ -18,6 +18,11 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
 <script type="text/javascript">
+
+  Handlebars.registerHelper('fetchGameVideos', function(gameId) {
+    window.open(`http://m.mlb.com/video?game_pk=${gameId}`)
+  })
+
   $(function () {
     $.get("http://statsapi.mlb.com/api/v1/schedule/games/?sportId=1", function(data) {
       const template = Handlebars.compile(document.getElementById("game-info").innerHTML)
@@ -27,15 +32,11 @@
     })
   })
 
-  function handleClick() {
 
-    console.log(event.target)
-
-}
 </script>
 
 <script id="game-info" type="text/x-handlebars-template">
-  <div class="game" onclick="handleClick()">
+  <div class="game">
     <section display="center">
       {{#each this}}
       <h1>{{date}}</h1>
@@ -43,6 +44,7 @@
         <p>{{teams.away.team.name}}  ({{teams.away.leagueRecord.wins}} - {{teams.away.leagueRecord.losses}})</p>
         <h3>at</h3>
         <p>{{teams.home.team.name}}   ({{teams.home.leagueRecord.wins}} - {{teams.home.leagueRecord.losses}})</p>
+        <a target="_blank" href="http://m.mlb.com/video?game_pk={{gameId}}">Click to see game videos</a>
           {{/each}}
       {{/each}}
     </section>
